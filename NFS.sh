@@ -34,3 +34,12 @@ ls /mnt/shares
 
 # Автоматическое монтирование
 echo "IP_1_VM:/srv/shares/nfs /mnt/shares nfs defaults 0 0" | sudo tee -a /etc/fstab
+
+
+
+# Дополнительные настройки
+setfacl -m u:user:rwx /mnt/documents/file.txt # назначение прав доступа user к file.txt
+setfacl -m g:group:rx /mnt/documents/directory # назначение прав доступа group к directory
+setfacl -m m:rwx /mnt/documents/directory # назначение полного доступа к directory
+getfacl /mnt/documents/file.txt # отобразит текущие права к file.txt
+setfacl -x u:user1 /mnt/documents/file.txt # удаление прав доступа к file.txt
